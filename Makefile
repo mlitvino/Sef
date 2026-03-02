@@ -16,8 +16,11 @@ restart: down dev
 build:
 	docker compose -f docker-compose.dev.yml up -d --build
 
-dev-front:
+front:
 	cd frontend && yarn start
+
+tunnel:
+	cd frontend && yarn start --tunnel
 
 # =========== Rebuild commands ===========
 
