@@ -1,19 +1,30 @@
 import { Text, View, StyleSheet } from 'react-native';
+import { useState } from 'react';
+
+import { router } from 'expo-router';
 
 import Button from '@/components/Button';
 
 export default function Index() {
-  const money = 10;
+  const [balance, setBalance] = useState(0);
+
+  const addIncome = () => {
+    router.push('/transaction-modal?type=income');
+  };
+
+  const addExpense = () => {
+    router.push('/transaction-modal?type=expense');
+  };
 
   return (
     <View style={styles.screen}>
       <View style={styles.buttonGroupContainer}>
-        <Button label={'minus'} onPress={() => console.log('Button 1')} />
+        <Button label={'minus'} onPress={addExpense} />
         <View style={styles.balanceGroupContainer} >
           <Text style={styles.balanceTitle}>Balance:</Text>
-          <Text style={styles.balance}>{money}</Text>
+          <Text style={styles.balance}>{balance}</Text>
         </View>
-        <Button label={'plus'} onPress={() => console.log('Button 2')} />
+        <Button label={'plus'} onPress={addIncome} />
       </View>
     </View>
   );

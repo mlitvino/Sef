@@ -8,6 +8,7 @@ export default function RootLayout() {
   return (
     <Stack>
       <Stack.Screen name={'(drawer)'} options={{ headerShown: false }}  />
+      <Stack.Screen name={'transaction-modal'} options={{ presentation: 'modal' }}  />
     </Stack>
   );
 }
