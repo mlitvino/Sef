@@ -1,3 +1,8 @@
+# =========== Prod specific commands ===========
+
+prod:
+	docker compose -f docker-compose.prod.yml up -d --build
+
 # =========== Build commands ===========
 
 start:
