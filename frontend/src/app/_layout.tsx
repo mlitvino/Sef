@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { setBackgroundColorAsync } from 'expo-system-ui';
-import { AppProviders } from '@/context/AppProviders';
+import { AppProviders } from '@/contexts/AppProviders';
 
 export default function RootLayout() {
   useEffect(() => {
