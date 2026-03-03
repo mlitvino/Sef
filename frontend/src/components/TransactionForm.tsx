@@ -1,0 +1,48 @@
+import { useState } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
+import Button from './Button';
+
+type Props = {
+  onSubmit: (amount: number) => void;
+  buttonLabel: string;
+};
+
+export default function TransactionForm({ onSubmit, buttonLabel }: Props) {
+  const [amount, setAmount] = useState('');
+
+  const handleSubmit = () => {
+    const value = parseFloat(amount);
+    if (!isNaN(value) && value > 0) {
+      onSubmit(value);
+      setAmount('');
+    }
+  };
+
+  return (
+    <View style={styles.form}>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter amount"
+        placeholderTextColor="#999"
+        keyboardType="numeric"
+        value={amount}
+        onChangeText={setAmount}
+      />
+      <Button label={buttonLabel} onPress={handleSubmit} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  form: {
+    gap: 20,
+    width: 300,
+  },
+  input: {
+    backgroundColor: '#fff',
+    padding: 15,
+    borderRadius: 8,
+    fontSize: 18,
+    color: '#000',
+  },
+});
