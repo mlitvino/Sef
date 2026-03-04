@@ -5,7 +5,7 @@ services:
     env_file:
       - ./.env
     networks:
-      - sef_net
+      - net
 
   # === Infrastructure ===
 
@@ -16,7 +16,7 @@ services:
     depends_on:
       - frontend
     networks:
-      - sef_net
+      - net
     healthcheck:
       test: ["CMD-SHELL", "wget -O /dev/null ${FRONTEND_URL} || exit 1"]
       interval: 5s
@@ -30,7 +30,7 @@ services:
       nginx:
         condition: service_healthy
     networks:
-      - sef_net
+      - net
 
 networks:
-  sef_net:
+  net:
