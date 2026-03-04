@@ -6,8 +6,9 @@ describe('Button component', () => {
   test('Button renders correctly', () => {
     const text = 'vampire';
 
-    const { getByText } = render(<Button label={text}/>);
+    const tree = render(<Button label={text} />);
 
-    getByText(text);
+    expect(tree.getByText(text)).toBeVisible();
+    expect(tree).toMatchSnapshot();
   });
 });

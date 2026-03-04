@@ -16,4 +16,15 @@ module.exports = {
       'react-native-uuid' +
     ')',
   ],
+
+  "collectCoverageFrom": [
+    "**/*.{ts,tsx,js,jsx}",
+    "!**/coverage/**",
+    "!**/node_modules/**",
+    "!**/babel.config.js",
+    "!**/expo-env.d.ts",
+    "!**/.expo/**",
+    "!**/dist/**",
+    "!**/app-example/**",
+  ],
 };
