@@ -1,14 +1,18 @@
 import { StyleSheet } from 'react-native';
 import { Drawer } from 'expo-router/drawer';
 
+import { useTheme } from '@/hooks/use-theme-color';
+
 export default function Layout() {
+  const theme = useTheme();
+
   return (
     <Drawer
       screenOptions={{
-        drawerStyle: styles.container,
-        drawerLabelStyle: styles.drawerLabel,
-        headerStyle: styles.header,
-        headerTitleStyle: styles.headerTitle,
+        drawerStyle: [styles.container, { backgroundColor: theme.canvas }],
+        drawerLabelStyle: { color: theme.text },
+        headerStyle: { backgroundColor: theme.elevated },
+        headerTitleStyle: { color: theme.text },
       }}
     >
       <Drawer.Screen
@@ -32,15 +36,5 @@ export default function Layout() {
 const styles = StyleSheet.create({
   container: {
     width: 250,
-    backgroundColor: '#222025',
-  },
-  header: {
-    backgroundColor: '#413d46',
-  },
-  headerTitle: {
-    color: '#fff',
-  },
-  drawerLabel: {
-    color: '#fff',
   },
 });

@@ -2,12 +2,15 @@ import { Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { setBackgroundColorAsync } from 'expo-system-ui';
 import { AppProviders } from '@/contexts/AppProviders';
+import { useThemeColor } from '@/hooks/use-theme-color';
 
 export default function RootLayout() {
+  const canvas = useThemeColor({}, 'canvas');
+
   useEffect(() => {
-    setBackgroundColorAsync('#222025')
+    setBackgroundColorAsync(canvas)
       .catch(err => console.error('Failed to change root background color:', err));
-  }, []);
+  }, [canvas]);
 
   return (
     <AppProviders>

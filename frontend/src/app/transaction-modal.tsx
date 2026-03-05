@@ -5,12 +5,14 @@ import { Transaction } from '@/types/Transaction';
 import { useBalanceDispatch } from '@/contexts/BalanceContext';
 import { useTransactionDispatch } from '@/contexts/TranscationContext';
 import TransactionForm from '@/components/TransactionForm';
+import { useTheme } from '@/hooks/use-theme-color';
 
 
 export default function TransactionModal() {
   const { type } = useLocalSearchParams<{ type: 'income' | 'expense' }>();
   const balanceDispatch = useBalanceDispatch();
   const transactionDispatch = useTransactionDispatch();
+  const theme = useTheme();
 
   if (type !== 'income' && type !== 'expense') {
     throw new Error('Error in transaction-modal.tsx: type is invalid');
@@ -31,12 +33,12 @@ export default function TransactionModal() {
     <>
       <Stack.Screen options={{
         title: type === 'income' ? 'Add Income' : 'Add Expense',
-        headerStyle: styles.header,
-        headerTitleStyle: styles.headerTitle,
+        headerStyle: { backgroundColor: theme.elevated },
+        headerTitleStyle: { color: theme.text },
       }}/>
 
-      <View style={styles.container}>
-        <Text style={styles.title}>
+      <View style={[styles.container, { backgroundColor: theme.canvas }]}>
+        <Text style={[styles.title, { color: theme.text }]}>
           {type === 'income' ? 'Income' : 'Expense'}
         </Text>
         <TransactionForm
@@ -51,21 +53,13 @@ export default function TransactionModal() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#222025',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
   title: {
     fontSize: 24,
-    color: '#fff',
     marginBottom: 20,
     fontWeight: 'bold',
-  },
-  header: {
-    backgroundColor: '#413d46',
-  },
-  headerTitle: {
-    color: '#fff',
   },
 });

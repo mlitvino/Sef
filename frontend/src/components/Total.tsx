@@ -2,12 +2,14 @@ import { Text, View, StyleSheet } from 'react-native';
 
 import type { TransactionType } from '@/types/Transaction';
 import { useTransactions } from '@/contexts/TranscationContext';
+import { useTheme } from '@/hooks/use-theme-color';
 
 type TotalProps = {
   type: TransactionType;
 };
 
 export default function Total({ type }: TotalProps) {
+  const theme = useTheme();
   const transactions = useTransactions();
 
   const total = transactions
@@ -16,12 +18,12 @@ export default function Total({ type }: TotalProps) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>{type}</Text>
+      <View style={[styles.header, { borderBottomColor: theme.separator}]}>
+        <Text style={[styles.headerText, { color: theme.text }]}>{type}</Text>
       </View>
       <View style={styles.body}>
-        <Text style={styles.categoryText}>all-time</Text>
-        <Text style={styles.totalText}>{total}</Text>
+        <Text style={[styles.categoryText, { color: theme.text }]}>all-time</Text>
+        <Text style={[styles.totalText, { color: theme.text }]}>{total}</Text>
       </View>
     </View>
   );
@@ -34,10 +36,8 @@ const styles = StyleSheet.create({
   header: {
     padding: 15,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(255, 255, 255, 0.1)',
   },
   headerText: {
-    color: '#fff',
     fontSize: 18,
     fontWeight: '600',
     textTransform: 'capitalize',
@@ -49,11 +49,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   categoryText: {
-    color: '#fff',
     fontSize: 16,
   },
   totalText: {
-    color: '#fff',
     fontSize: 24,
     fontWeight: '600',
   },

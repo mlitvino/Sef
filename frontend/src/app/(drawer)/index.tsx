@@ -5,9 +5,11 @@ import { router } from 'expo-router';
 import { useBalance } from '@/contexts/BalanceContext';
 import Button from '@/components/Button';
 import Total from '@/components/Total';
+import { useTheme } from '@/hooks/use-theme-color';
 
 export default function Index() {
   const balance = useBalance();
+  const theme = useTheme();
 
   const addIncome = () => {
     router.push('/transaction-modal?type=income');
@@ -18,21 +20,21 @@ export default function Index() {
   };
 
   return (
-    <View style={styles.screen}>
+    <View style={[styles.screen, { backgroundColor: theme.background }]}>
 
-      <View style={styles.totalsBox}>
+      <View style={[styles.totalsBox, { backgroundColor: theme.surface }]}>
         <Total type={'income'} />
-        <View style={styles.verticalSeparator} />
+        <View style={[styles.verticalSeparator, { backgroundColor: theme.separator }]} />
         <Total type={'expense'} />
       </View>
 
       <View style={styles.content}>
-        <View style={styles.buttonGroupContainer}>
+        <View style={[styles.buttonGroupContainer, { backgroundColor: theme.surface }]}>
           <Button label={'plus'} onPress={addIncome} />
 
-          <View style={styles.balanceGroupContainer} >
-            <Text style={styles.balanceTitle}>Balance:</Text>
-            <Text style={styles.balance}>{balance}</Text>
+          <View style={[styles.balanceGroupContainer, { backgroundColor: theme.inset }]} >
+            <Text style={[styles.balanceTitle, { color: theme.text }]}>Balance:</Text>
+            <Text style={[styles.balance, { color: theme.text }]}>{balance}</Text>
           </View>
 
           <Button label={'minus'} onPress={addExpense} />
@@ -46,12 +48,10 @@ export default function Index() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#2f2e33',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   totalsBox: {
-    backgroundColor: '#262236',
     width: 360,
     borderRadius: 12,
     overflow: 'hidden',
@@ -69,10 +69,8 @@ const styles = StyleSheet.create({
   },
   verticalSeparator: {
     width: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
   },
   buttonGroupContainer: {
-    backgroundColor: '#262236',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -83,18 +81,15 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   balanceGroupContainer: {
-    backgroundColor: '#3a3257',
     width: 100,
     height: 100,
     alignItems: 'center',
     padding: 15,
   },
   balanceTitle: {
-    color: '#fff',
     fontSize: 16,
   },
   balance: {
-    color: '#fff',
     fontSize: 40,
   },
 });

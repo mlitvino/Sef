@@ -1,5 +1,7 @@
 import { Pressable, StyleSheet, Text, type ViewStyle } from 'react-native';
 
+import { useThemeColor } from '@/hooks/use-theme-color';
+
 type ButtonSize = 'small' | 'medium' | 'large';
 
 type Props = {
@@ -17,6 +19,7 @@ export default function Button({
   style,
   disabled = false,
 }: Props) {
+  const textColor = useThemeColor({}, 'text');
 
   const sizeStyles = {
     small: styles.buttonSmall,
@@ -36,6 +39,7 @@ export default function Button({
         styles.buttonBase,
         sizeStyles[size],
         style,
+        { backgroundColor: textColor },
       ]}
       onPress={onPress}
       disabled={disabled}
@@ -57,11 +61,9 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
   },
   textBase: {
     fontWeight: '600',
-    color: '#000',
     textAlign: 'center',
   },
 

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
+
 import Button from '@/components/Button';
+import { useThemeColor } from '@/hooks/use-theme-color';
 
 type Props = {
   onSubmit: (amount: number) => void;
@@ -9,6 +11,7 @@ type Props = {
 
 export default function TransactionForm({ onSubmit, buttonLabel }: Props) {
   const [amount, setAmount] = useState('');
+  const textColor = useThemeColor({}, 'text');
 
   const handleSubmit = () => {
     const value = parseFloat(amount);
@@ -21,7 +24,7 @@ export default function TransactionForm({ onSubmit, buttonLabel }: Props) {
   return (
     <View style={styles.form}>
       <TextInput
-        style={styles.input}
+        style={[styles.input, { backgroundColor: textColor }]}
         placeholder="Enter amount"
         placeholderTextColor="#999"
         keyboardType="numeric"
@@ -39,10 +42,8 @@ const styles = StyleSheet.create({
     width: 300,
   },
   input: {
-    backgroundColor: '#fff',
     padding: 15,
     borderRadius: 8,
     fontSize: 18,
-    color: '#000',
   },
 });

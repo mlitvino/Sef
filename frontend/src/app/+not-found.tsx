@@ -1,16 +1,19 @@
 import { View, StyleSheet } from 'react-native';
 import { Link, Stack } from 'expo-router';
+import { useTheme } from '@/hooks/use-theme-color';
 
 export default function NotFoundScreen() {
+  const theme = useTheme();
+
   return (
     <>
       <Stack.Screen options={{
         title: 'Oops! Not Found!',
-        headerStyle: styles.header,
-        headerTitleStyle: styles.headerTitle,
+        headerStyle: { backgroundColor: theme.elevated },
+        headerTitleStyle: { color: theme.text },
       }}/>
-      <View style={styles.container}>
-        <Link href="/" style={styles.button}>
+      <View style={[styles.container, { backgroundColor: theme.canvas}] }>
+        <Link href="/" style={[styles.button, { color: theme.text }]}>
           Go back to Home screen
         </Link>
       </View>
@@ -21,19 +24,11 @@ export default function NotFoundScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#222025',
     justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
     fontSize: 20,
     textDecorationLine: 'underline',
-    color: '#fff',
-  },
-  header: {
-    backgroundColor: '#413d46',
-  },
-  headerTitle: {
-    color: '#fff',
   },
 });
