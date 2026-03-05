@@ -35,7 +35,6 @@ exports[`Button component Button renders correctly 1`] = `
     [
       {
         "alignItems": "center",
-        "backgroundColor": "#fff",
         "borderRadius": 100,
         "justifyContent": "center",
       },
@@ -44,6 +43,9 @@ exports[`Button component Button renders correctly 1`] = `
         "width": 80,
       },
       undefined,
+      {
+        "backgroundColor": "#ffffff",
+      },
     ]
   }
 >
@@ -51,7 +53,6 @@ exports[`Button component Button renders correctly 1`] = `
     style={
       [
         {
-          "color": "#000",
           "fontWeight": "600",
           "textAlign": "center",
         },
