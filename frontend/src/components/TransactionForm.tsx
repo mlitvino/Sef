@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
-import Button from './Button';
+import Button from '@/components/Button';
 
 type Props = {
   onSubmit: (amount: number) => void;
