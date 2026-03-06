@@ -6,7 +6,7 @@ import React, {
 
 } from 'react';
 
-import { Themes, ThemeColors } from '@/constants/theme';
+import { Themes, ThemeColor } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 type ThemeProviderProps = {
@@ -39,7 +39,7 @@ export function useTheme() {
   return Themes[ctx];
 }
 
-export function useThemeColor(colorName: keyof ThemeColors) {
+export function useThemeColor(colorName: keyof ThemeColor) {
   const ctx = useContext(ThemeStateContext);
   if (!ctx)
     throw new Error('Error: useTheme is undefined');

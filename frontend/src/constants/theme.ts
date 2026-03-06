@@ -1,4 +1,4 @@
-export type ThemeColors = {
+export type ThemeColor = {
     canvas: string;
     background: string;
     surface: string;
@@ -14,7 +14,7 @@ export type ThemeColors = {
     expense: string;
 };
 
-export const Themes: Record<string, ThemeColors> = {
+export const Themes: Record<string, ThemeColor> = {
   light:  {
     canvas:   '#222025',
     background: '#2f2e33',
