@@ -46,9 +46,16 @@ export function useThemeColor(colorName: keyof ThemeColor) {
   return Themes[ctx][colorName];
 }
 
-export function useThemeAction() {
+export function useThemeName(): ThemeState {
+  const ctx = useContext(ThemeStateContext);
+  if (ctx === undefined)
+    throw new Error('Error: useThemeName must be used within ThemeProvider');
+  return ctx;
+}
+
+export function useSetTheme() {
   const ctx = useContext(ThemeDispatchContext);
   if (!ctx)
     throw new Error('Error: useThemeAction is undefined');
-  return ctx;
+  return ctx.setTheme;
 }

@@ -14,10 +14,14 @@ export type ThemeColor = {
     expense: string;
 };
 
-export const Themes: Record<string, ThemeColor> = {
+export type ThemeName =
+  | 'light'
+  | 'dark';
+
+export const Themes: Record<ThemeName, ThemeColor> = {
   light:  {
-    canvas:   '#222025',
-    background: '#2f2e33',
+    canvas:   '#190636',
+    background: '#281e4e',
     surface:  '#262236',
     inset:    '#3a3257',
     elevated: '#413d46',

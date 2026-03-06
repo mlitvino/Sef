@@ -1,7 +1,6 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useTheme } from '@/contexts/ThemeContext';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useTheme, useSetTheme, useThemeName } from '@/contexts/ThemeContext';
 
 type ThemeOption = {
   label: string;
@@ -16,7 +15,8 @@ const THEME_OPTIONS: ThemeOption[] = [
 export default function Appearance() {
   const router = useRouter();
   const theme = useTheme();
-  const colorScheme = useColorScheme() ?? 'light';
+  const setTheme = useSetTheme();
+  const themeName = useThemeName();
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
@@ -35,10 +35,10 @@ export default function Appearance() {
             { backgroundColor: theme.surface, borderColor: theme.separator },
             pressed && styles.pressed,
           ]}
-          onPress={() => { }}
+          onPress={() => { setTheme(option.value); }}
         >
           <Text style={[styles.rowLabel, { color: theme.text }]}>{option.label}</Text>
-          {colorScheme === option.value && (
+          {themeName === option.value && (
             <Text style={[styles.checkmark, { color: theme.income }]}>✓</Text>
           )}
         </Pressable>
