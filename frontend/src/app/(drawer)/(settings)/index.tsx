@@ -1,10 +1,13 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
+
 import { useTheme } from '@/contexts/ThemeContext';
 
 export default function SettingsIndex() {
   const router = useRouter();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
@@ -16,7 +19,7 @@ export default function SettingsIndex() {
           ]}
           onPress={() => router.push('/(drawer)/(settings)/appearance')}
         >
-          <Text style={[styles.rowLabel, { color: theme.text }]}>Appearance</Text>
+          <Text style={[styles.rowLabel, { color: theme.text }]}>{t('appearance.title')}</Text>
         </Pressable>
       </View>
     </View>

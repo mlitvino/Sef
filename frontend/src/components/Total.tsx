@@ -1,4 +1,5 @@
 import { Text, View, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import type { TransactionType } from '@/types/Transaction';
 import { useTransactions } from '@/contexts/TranscationContext';
@@ -9,6 +10,7 @@ type TotalProps = {
 };
 
 export default function Total({ type }: TotalProps) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const transactions = useTransactions();
 
@@ -22,7 +24,7 @@ export default function Total({ type }: TotalProps) {
         <Text style={[styles.headerText, { color: theme.text }]}>{type}</Text>
       </View>
       <View style={styles.body}>
-        <Text style={[styles.categoryText, { color: theme.text }]}>all-time</Text>
+        <Text style={[styles.categoryText, { color: theme.text }]}>{t('total.allTime')}</Text>
         <Text style={[styles.totalText, { color: theme.text }]}>{total}</Text>
       </View>
     </View>

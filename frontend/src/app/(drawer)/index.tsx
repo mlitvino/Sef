@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 
 import { useBalance } from '@/contexts/BalanceContext';
 import IconButton from '@/components/IconButton';
@@ -9,6 +10,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 export default function Index() {
   const balance = useBalance();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const addIncome = () => {
     router.push('/transaction-modal?type=income');
@@ -32,7 +34,7 @@ export default function Index() {
           <IconButton icon="add" onPress={addIncome} style={{ backgroundColor: theme.income }} />
 
           <View style={[styles.balanceGroupContainer, { backgroundColor: theme.inset }]} >
-            <Text style={[styles.balanceTitle, { color: theme.text }]}>Balance:</Text>
+            <Text style={[styles.balanceTitle, { color: theme.text }]}>{t('home.balance')}:</Text>
             <Text style={[styles.balance, { color: theme.text }]}>{balance}</Text>
           </View>
 

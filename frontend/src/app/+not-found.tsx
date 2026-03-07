@@ -1,20 +1,22 @@
 import { View, StyleSheet } from 'react-native';
 import { Link, Stack } from 'expo-router';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export default function NotFoundScreen() {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <>
       <Stack.Screen options={{
-        title: 'Oops! Not Found!',
+        title: t('notFoundScreen.header'),
         headerStyle: { backgroundColor: theme.elevated },
         headerTitleStyle: { color: theme.text },
       }}/>
       <View style={[styles.container, { backgroundColor: theme.canvas}] }>
         <Link href="/" style={[styles.button, { color: theme.text }]}>
-          Go back to Home screen
+          {t('notFoundScreen.mainMessage')}
         </Link>
       </View>
     </>

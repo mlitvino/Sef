@@ -1,5 +1,6 @@
 import { View, StyleSheet, Text } from 'react-native';
 import { Stack, useLocalSearchParams, router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 
 import { Transaction } from '@/types/Transaction';
 import { useBalanceDispatch } from '@/contexts/BalanceContext';
@@ -13,6 +14,7 @@ export default function TransactionModal() {
   const balanceDispatch = useBalanceDispatch();
   const transactionDispatch = useTransactionDispatch();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   if (type !== 'income' && type !== 'expense') {
     throw new Error('Error in transaction-modal.tsx: type is invalid');
@@ -32,14 +34,19 @@ export default function TransactionModal() {
   return (
     <>
       <Stack.Screen options={{
-        title: type === 'income' ? 'Add Income' : 'Add Expense',
+        title: type === 'income'
+          ? t('transaction.addIncome')
+          : t('transaction.addExpense'),
         headerStyle: { backgroundColor: theme.elevated },
         headerTitleStyle: { color: theme.text },
       }}/>
 
       <View style={[styles.container, { backgroundColor: theme.canvas }]}>
         <Text style={[styles.title, { color: theme.text }]}>
-          {type === 'income' ? 'Income' : 'Expense'}
+          {type === 'income'
+            ? t('total.income')
+            : t('total.expense')
+          }
         </Text>
         <TransactionForm
           onSubmit={handleSubmit}

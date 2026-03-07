@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { Drawer } from 'expo-router/drawer';
+import { useTranslation } from 'react-i18next';
 
 import { useTheme } from '@/contexts/ThemeContext';
 
 export default function Layout() {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <Drawer
@@ -18,22 +20,22 @@ export default function Layout() {
       <Drawer.Screen
         name={'index'}
         options={{
-          title: 'Home',
-          drawerLabel: 'Home',
+          title: t('nav.home'),
+          drawerLabel: t('nav.home'),
         }}
       />
       <Drawer.Screen
         name={'transactions'}
         options={{
-          title: 'Transactions',
-          drawerLabel: 'Transactions',
+          title: t('nav.transactions'),
+          drawerLabel: t('nav.transactions'),
         }}
       />
       <Drawer.Screen
         name={'(settings)'}
         options={{
-          title: 'Settings',
-          drawerLabel: 'Settings',
+          title: t('nav.settings'),
+          drawerLabel: t('nav.settings'),
         }}
       />
     </Drawer>
