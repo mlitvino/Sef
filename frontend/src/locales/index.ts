@@ -12,8 +12,14 @@ export const resources = {
 
 export type Language = keyof typeof resources;
 
-export function changeLanguage(lang: Language) {
-  return i18n.changeLanguage(lang);
+function initLanguage() {
+  const locLang = Localization.getLocales()[0]?.languageCode;
+
+  if (locLang && Object.prototype.hasOwnProperty.call(resources, locLang)) {
+    return locLang as LanguageName;
+  }
+
+  return 'en';
 }
 
 const i18n = createInstance();
@@ -22,7 +28,7 @@ void i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: Localization.getLocales()[0]?.languageCode ?? 'en',
+    lng: initLanguage(),
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
