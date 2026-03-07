@@ -19,7 +19,19 @@ export default function SettingsIndex() {
           ]}
           onPress={() => router.push('/(drawer)/(settings)/appearance')}
         >
-          <Text style={[styles.rowLabel, { color: theme.text }]}>{t('appearance.title')}</Text>
+          <Text style={[styles.rowLabel, { color: theme.text }]}>{t('settings.appearance')}</Text>
+        </Pressable>
+      </View>
+
+      <View style={[styles.section, { borderColor: theme.separator }]}>
+        <Pressable
+          style={({ pressed }) => [
+            styles.row,
+            pressed && styles.pressed,
+          ]}
+          onPress={() => router.push('/(drawer)/(settings)/language')}
+        >
+          <Text style={[styles.rowLabel, { color: theme.text }]}>{t('settings.language')}</Text>
         </Pressable>
       </View>
     </View>

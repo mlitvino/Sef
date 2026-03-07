@@ -11,6 +11,7 @@ export default {
     settings: {
       title: 'Asetukset',
       appearance: 'Ulkoasu',
+      language: 'Kieli',
     },
     appearance: {
       title: 'Ulkoasu',

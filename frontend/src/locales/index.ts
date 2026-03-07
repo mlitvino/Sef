@@ -10,7 +10,22 @@ export const resources = {
   fi,
 };
 
-export type Language = keyof typeof resources;
+export type LanguageName = keyof typeof resources;
+
+export async function changeLanguage(lang: LanguageName) {
+  await i18n.changeLanguage(lang)
+    .catch((e) => {
+      throw new Error('Error: failed to change language:', e);
+    });
+}
+
+export function getCurrentLanguage() {
+  const ln = i18n.language;
+  if (!ln) {
+    throw new Error('Error: language is undefined');
+  }
+  return ln as LanguageName;
+}
 
 function initLanguage() {
   const locLang = Localization.getLocales()[0]?.languageCode;

@@ -11,6 +11,7 @@ export default {
     settings: {
       title: 'Settings',
       appearance: 'Appearance',
+      language: 'Language',
     },
     appearance: {
       title: 'Appearance',
