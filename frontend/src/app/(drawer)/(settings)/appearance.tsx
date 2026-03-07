@@ -1,6 +1,7 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import { TFunction } from 'i18next';
 
 import { useTheme, useSetTheme, useThemeName } from '@/contexts/ThemeContext';
 import { ThemeName } from '@/constants/theme';
@@ -10,18 +11,19 @@ type ThemeOption = {
   value: ThemeName;
 };
 
+const getThemeOptions = (t: TFunction): ThemeOption[] => [
+  { label: t('appearance.original'), value: 'original' },
+  { label: t('appearance.light'),    value: 'light' },
+  { label: t('appearance.dark'),     value: 'dark' },
+];
+
 export default function Appearance() {
   const router = useRouter();
   const theme = useTheme();
   const setTheme = useSetTheme();
   const themeName = useThemeName();
   const { t } = useTranslation();
-
-  const options: ThemeOption[] = [
-    { label: t('appearance.original'), value: 'original' },
-    { label: t('appearance.light'),    value: 'light' },
-    { label: t('appearance.dark'),     value: 'dark' },
-  ];
+  const themeOptions = getThemeOptions(t);
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
@@ -33,7 +35,7 @@ export default function Appearance() {
         <Text style={[styles.backLabel, { color: theme.text }]}>{t('appearance.title')}</Text>
       </Pressable>
 
-      {options.map((option) => (
+      {themeOptions.map((option) => (
         <Pressable
           key={option.value}
           style={({ pressed }) => [
