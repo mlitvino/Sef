@@ -2,6 +2,7 @@ import { Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { setBackgroundColorAsync } from 'expo-system-ui';
 
+import '@/locales';
 import { AppProviders } from '@/contexts/AppProviders';
 import { useThemeColor } from '@/contexts/ThemeContext';
 
