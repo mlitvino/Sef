@@ -7,7 +7,7 @@ import { useBalanceDispatch } from '@/contexts/BalanceContext';
 import { useTransactionDispatch } from '@/contexts/TranscationContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import TransactionForm from '@/components/TransactionForm';
-
+import HeaderLeft from '@/components/HeaderLeft';
 
 export default function TransactionModal() {
   const { type } = useLocalSearchParams<{ type: 'income' | 'expense' }>();
@@ -39,6 +39,12 @@ export default function TransactionModal() {
           : t('transaction.addExpense'),
         headerStyle: { backgroundColor: theme.elevated },
         headerTitleStyle: { color: theme.text },
+        headerLeft: () => (
+          <HeaderLeft
+            icon={'keyboard-arrow-left'}
+            onPress={() => router.push('/(drawer)')}
+          />
+        ),
       }}/>
 
       <View style={[styles.container, { backgroundColor: theme.background }]}>
