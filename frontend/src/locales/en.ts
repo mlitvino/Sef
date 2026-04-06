@@ -11,7 +11,13 @@ export default {
     settings: {
       title: 'Settings',
       appearance: 'Appearance',
+      currency: 'Currency',
       language: 'Language',
+    },
+    currency: {
+      title: 'Currency',
+      eur: 'Euro (EUR)',
+      usd: 'US Dollar (USD)',
     },
     appearance: {
       title: 'Appearance',

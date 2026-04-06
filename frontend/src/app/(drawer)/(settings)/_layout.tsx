@@ -14,6 +14,7 @@ export default function Layout() {
     >
       <Stack.Screen name="index" />
       <Stack.Screen name="appearance" />
+      <Stack.Screen name="currency" />
       <Stack.Screen name="language" />
     </Stack>
   );

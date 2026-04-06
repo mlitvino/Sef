@@ -11,7 +11,13 @@ export default {
     settings: {
       title: 'Asetukset',
       appearance: 'Ulkoasu',
+      currency: 'Valuutta',
       language: 'Kieli',
+    },
+    currency: {
+      title: 'Valuutta',
+      eur: 'Euro (EUR)',
+      usd: 'Yhdysvaltain dollari (USD)',
     },
     appearance: {
       title: 'Ulkoasu',
