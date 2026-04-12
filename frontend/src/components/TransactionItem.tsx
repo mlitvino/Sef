@@ -11,12 +11,23 @@ type TransactionItemProps = {
 export function TransactionItem({ transaction }: TransactionItemProps) {
   const theme = useTheme();
   const formatCurrency = useCurrencyFormatter();
+  const createdAt = new Date(transaction.createdAt);
+  const valueColor = transaction.type === 'income' ? theme.income : theme.expense;
+  const valuePrefix = transaction.type === 'income' ? '+' : '-';
 
   return (
     <View style={[styles.transactionItem, { backgroundColor: theme.canvas }]}>
-      <Text style={{ color: theme.text }}>
-        {transaction.createdAt.toLocaleTimeString()}
-        {transaction.type}: {formatCurrency(transaction.amount)}
+      <View style={styles.metaRow}>
+        <Text style={[styles.metaText, { color: theme.text }]}>
+          {createdAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+        </Text>
+        <Text style={[styles.metaText, { color: theme.text }]}>
+          {transaction.type}
+        </Text>
+      </View>
+
+      <Text style={[styles.valueText, { color: valueColor }]}>
+        {valuePrefix}{formatCurrency(transaction.amount)}
       </Text>
     </View>
   );
@@ -24,7 +35,24 @@ export function TransactionItem({ transaction }: TransactionItemProps) {
 
 const styles = StyleSheet.create({
   transactionItem: {
-    padding: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
     marginVertical: 5,
+    borderRadius: 10,
+  },
+  metaRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  metaText: {
+    fontSize: 13,
+    textTransform: 'capitalize',
+    opacity: 0.85,
+  },
+  valueText: {
+    fontSize: 20,
+    fontWeight: '700',
   },
 });
