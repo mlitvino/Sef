@@ -14,10 +14,6 @@ export default function Transactions() {
   const transactions = useTransactions();
   const [filter, setFilter] = useState<FilterType>('all');
 
-  const filteredTransactions = filter === 'all'
-    ? transactions
-    : transactions.filter((t) => t.type === filter);
-
   return (
     <View style={[styles.screen, { backgroundColor: theme.background }]}>
       <View style={styles.filterRow}>
@@ -70,8 +66,10 @@ export default function Transactions() {
       </View>
 
       <View style={styles.transactionList}>
-        {filteredTransactions.map(t =>
-          <TransactionItem key={t.id} transaction={t} />,
+        {transactions.map((t) =>
+          filter === 'all' || t.type === filter
+            ? <TransactionItem key={t.id} transaction={t} />
+            : null,
         )}
       </View>
     </View>
