@@ -1,5 +1,8 @@
 export default {
   translation: {
+    common: {
+      done: 'Valmis',
+    },
     home: {
       balance: 'Saldo',
     },
@@ -7,6 +10,8 @@ export default {
       addIncome: 'Lisää tulo',
       addExpense: 'Lisää meno',
       enterAmount: 'Syötä summa',
+      selectDate: 'Päivä',
+      selectTime: 'Aika',
     },
     settings: {
       title: 'Asetukset',

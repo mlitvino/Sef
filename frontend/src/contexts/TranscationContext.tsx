@@ -14,7 +14,7 @@ type TransactionProviderProps = {
 };
 
 type TransactionAction =
-  | { type: 'add'; transaction: Omit<Transaction, 'id' | 'createdAt'> }
+  | { type: 'add'; transaction: Omit<Transaction, 'id'> }
   | { type: 'remove'; id: string }
   | { type: 'clear' };
 
@@ -59,7 +59,6 @@ function transactionReducer(transactions: TransactionState, action: TransactionA
       const newTransaction: Transaction = {
         ...action.transaction,
         id: uuid.v4(),
-        createdAt: new Date(),
       };
 
       return [

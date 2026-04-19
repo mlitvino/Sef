@@ -12,6 +12,9 @@ export type ThemeColor = {
 
     income: string;
     expense: string;
+
+    pickerAccent: string;
+    pickerText: string;
 };
 
 export type ThemeName =
@@ -35,6 +38,9 @@ export const Themes: Record<ThemeName, ThemeColor> = {
 
     income:   '#4caf82',
     expense:  '#e05c5c',
+
+    pickerAccent: '#413d46',
+    pickerText: '#111111',
   },
   black: {
     canvas:   '#3f3c44',
@@ -50,6 +56,9 @@ export const Themes: Record<ThemeName, ThemeColor> = {
 
     income:   '#449e75',
     expense:  '#e05c5c',
+
+    pickerAccent: '#76d9b3',
+    pickerText: '#ffffff',
   },
   dark: {
     canvas:   '#222025',
@@ -65,6 +74,9 @@ export const Themes: Record<ThemeName, ThemeColor> = {
 
     income:   '#fff',
     expense:  '#fff',
+
+    pickerAccent: '#8ec5ff',
+    pickerText: '#ffffff',
   },
   black_yellow: {
     canvas:      '#070607',
@@ -80,5 +92,8 @@ export const Themes: Record<ThemeName, ThemeColor> = {
 
     income:      '#ffd600',
     expense:     '#ff9800',
+
+    pickerAccent: '#ffd600',
+    pickerText: '#fff7a8',
   },
 };

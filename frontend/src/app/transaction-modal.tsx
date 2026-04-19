@@ -6,7 +6,7 @@ import { Transaction } from '@/types/Transaction';
 import { useBalanceDispatch } from '@/contexts/BalanceContext';
 import { useTransactionDispatch } from '@/contexts/TranscationContext';
 import { useTheme } from '@/contexts/ThemeContext';
-import TransactionForm from '@/components/TransactionForm';
+import TransactionForm from '@/components/transaction-form/TransactionForm';
 import HeaderLeft from '@/components/HeaderLeft';
 
 export default function TransactionModal() {
@@ -20,10 +20,11 @@ export default function TransactionModal() {
     throw new Error('Error in transaction-modal.tsx: type is invalid');
   }
 
-  const handleSubmit = (amount: number) => {
-    const transaction: Omit<Transaction, 'id' | 'createdAt'> = {
+  const handleSubmit = (amount: number, createdAt: Date) => {
+    const transaction: Omit<Transaction, 'id'> = {
       type,
       amount,
+      createdAt,
     };
 
     balanceDispatch({ type, amount });

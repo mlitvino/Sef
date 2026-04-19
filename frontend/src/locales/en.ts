@@ -1,5 +1,8 @@
 export default {
   translation: {
+    common: {
+      done: 'Done',
+    },
     home: {
       balance: 'Balance',
     },
@@ -7,6 +10,8 @@ export default {
       addIncome: 'Add income',
       addExpense: 'Add expense',
       enterAmount: 'Enter amount',
+      selectDate: 'Date',
+      selectTime: 'Time',
     },
     settings: {
       title: 'Settings',
