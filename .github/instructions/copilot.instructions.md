@@ -1,11 +1,11 @@
 ---
 applyTo: '**'
 ---
-# Copilot Instructions for Sef
+# Copilot Instructions for Korob
 
 ## Overview
 
-Sef is a minimalistic expense tracker built with React Native (Expo) and TypeScript, in early development stage. The app uses drawer navigation with modal overlays for adding transactions, and manages state through React Context + useReducer patterns.
+Korob is a minimalistic expense tracker built with React Native (Expo) and TypeScript, in early development stage. The app uses drawer navigation with modal overlays for adding transactions, and manages state through React Context + useReducer patterns.
 
 ## Architecture
 

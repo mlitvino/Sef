@@ -1,10 +1,10 @@
-# Sef
+# Korob
 
 A minimalistic mobile expense tracker with a focus on simplicity and ease of use.
 
 ## Description
 
-Sef helps you track your expenses effortlessly with a clean, intuitive interface. Built with React Native and Expo, it offers a seamless experience across iOS and Android platforms.
+Korob helps you track your expenses effortlessly with a clean, intuitive interface. Built with React Native and Expo, it offers a seamless experience across iOS and Android platforms.
 
 ## Web
 

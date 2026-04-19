@@ -25,7 +25,7 @@ jobs:
             set -euo pipefail
             trap 'echo "Deployment failed (exit $?)"; exit 1' ERR
 
-            cd ~/Sef
+            cd ~/korob
             git pull origin main
             make down
             make prod
