@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 
 import { useTransactions } from '@/contexts/TranscationContext';
@@ -12,6 +12,17 @@ export default function Transactions() {
   const theme = useTheme();
   const transactions = useTransactions();
   const [filter, setFilter] = useState<FilterType>('all');
+  const visibleTransactions = useMemo(() => {
+    const getTimestamp = (value: string | Date) => {
+      const timestamp = new Date(value).getTime();
+      return Number.isNaN(timestamp) ? 0 : timestamp;
+    };
+
+    return transactions
+      .filter((t) => filter === 'all' || t.type === filter)
+      .sort((a, b) => getTimestamp(b.createdAt) - getTimestamp(a.createdAt));
+  }, [filter, transactions]);
+
   let previousDateKey = '';
 
   return (
@@ -66,11 +77,7 @@ export default function Transactions() {
       </View>
 
       <View style={styles.transactionList}>
-        {transactions.map((t) => {
-          if (filter !== 'all' && t.type !== filter) {
-            return null;
-          }
-
+        {visibleTransactions.map((t) => {
           const createdAt = new Date(t.createdAt);
           const dateKey = createdAt.toDateString();
           const showDateSeparator = dateKey !== previousDateKey;
