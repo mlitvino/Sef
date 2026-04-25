@@ -25,6 +25,7 @@ This is the shared starting point for AI coding agents working in this repositor
 ## Architecture Boundaries
 
 - Keep Expo Router structure under [frontend/src/app](frontend/src/app): root stack + drawer group + modal route.
+- Keep feature-local UI and logic under [frontend/src/features](frontend/src/features), grouped by page/flow concern.
 - Keep global state in context/reducer modules under [frontend/src/contexts](frontend/src/contexts).
 - Keep transaction domain model aligned with [frontend/src/types/Transaction.tsx](frontend/src/types/Transaction.tsx).
 - Use theme and locale infrastructure from [frontend/src/constants/theme.ts](frontend/src/constants/theme.ts), [frontend/src/contexts/ThemeContext.tsx](frontend/src/contexts/ThemeContext.tsx), and [frontend/src/locales/index.ts](frontend/src/locales/index.ts).
@@ -45,4 +46,4 @@ This is the shared starting point for AI coding agents working in this repositor
 ## Reference Docs
 
 - Product and environment overview: [README.md](README.md)
-- Frontend-focused coding instructions: [.github/instructions/copilot.instructions.md](.github/instructions/copilot.instructions.md)
+- Frontend-focused coding instructions: [.github/instructions/frontend.instructions.md](.github/instructions/frontend.instructions.md)

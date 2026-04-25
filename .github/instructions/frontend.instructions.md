@@ -8,6 +8,15 @@ Use this file for frontend-specific behavior. For repository-wide context, start
 ## Scope
 
 - Active app code is under [frontend/src/app](../../frontend/src/app).
+- Feature modules live under [frontend/src/features](../../frontend/src/features).
+
+## Feature Structure
+
+- Use feature-first organization for non-shared domain code:
+  - [frontend/src/features/transaction-list](../../frontend/src/features/transaction-list) for the transactions drawer page (filtering, list item rendering, date grouping).
+  - [frontend/src/features/transaction-form](../../frontend/src/features/transaction-form) for modal transaction creation flow (form, date/time pickers, form helpers).
+- Keep these as separate features even though both are in the transaction domain; they back different pages and evolve independently.
+- Keep only truly reusable primitives in shared folders such as [frontend/src/components](../../frontend/src/components) and [frontend/src/hooks](../../frontend/src/hooks).
 
 ## Routing And Providers
 
