@@ -43,7 +43,7 @@ export const Themes: Record<ThemeName, ThemeColor> = {
     pickerText: '#111111',
   },
   black: {
-    canvas:   '#3f3c44',
+    canvas:   '#141314',
     background: '#0c0c0c',
     surface:  '#222125',
     inset:    '#413d4e',
