@@ -12,7 +12,7 @@ import DateTimePicker, {
 } from 'react-native-ui-datepicker';
 
 import IconButton from '@/components/IconButton';
-import { useTheme, useThemeColor } from '@/contexts/ThemeContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import PickerSheet from '@/components/transaction-form/PickerSheet';
 import {
   formatDateInput,
@@ -31,7 +31,6 @@ export default function TransactionForm({ onSubmit }: Props) {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
   const theme = useTheme();
-  const textColor = useThemeColor('text');
   const { t } = useTranslation();
   const calendarStyles = useCalendarStyles();
 
@@ -73,7 +72,7 @@ export default function TransactionForm({ onSubmit }: Props) {
   return (
     <View style={styles.form}>
       <TextInput
-        style={[styles.input, { backgroundColor: textColor }]}
+        style={[styles.input, { backgroundColor: theme.text }]}
         placeholder={t('transaction.enterAmount')}
         placeholderTextColor="#999"
         keyboardType="numeric"
@@ -83,24 +82,24 @@ export default function TransactionForm({ onSubmit }: Props) {
       <View style={styles.dateTimeRow}>
         <Pressable
           onPress={() => setShowDatePicker(true)}
-          style={[styles.pickerButton, styles.dateInput, { backgroundColor: theme.elevated }]}
+          style={[styles.pickerButton, styles.dateInput, { backgroundColor: theme.text }]}
         >
-          <Text style={[styles.pickerLabel, { color: theme.text }]}>
+          <Text style={[styles.pickerLabel, { color: theme.contrastText }]}>
             {t('transaction.selectDate')}
           </Text>
-          <Text style={[styles.pickerValue, { color: theme.text }]}>
+          <Text style={[styles.pickerValue, { color: theme.contrastText }]}>
             {formatDateInput(createdAt)}
           </Text>
         </Pressable>
 
         <Pressable
           onPress={() => setShowTimePicker(true)}
-          style={[styles.pickerButton, styles.timeInput, { backgroundColor: theme.elevated }]}
+          style={[styles.pickerButton, styles.timeInput, { backgroundColor: theme.text }]}
         >
-          <Text style={[styles.pickerLabel, { color: theme.text }]}>
+          <Text style={[styles.pickerLabel, { color: theme.contrastText }]}>
             {t('transaction.selectTime')}
           </Text>
-          <Text style={[styles.pickerValue, { color: theme.text }]}>
+          <Text style={[styles.pickerValue, { color: theme.contrastText }]}>
             {formatTimeInput(createdAt)}
           </Text>
         </Pressable>
@@ -146,7 +145,7 @@ export default function TransactionForm({ onSubmit }: Props) {
         label={t('common.done')}
         variant="wide"
         onPress={handleSubmit}
-        style={{ backgroundColor: textColor }}
+        style={{ backgroundColor: theme.text }}
       />
     </View>
   );
