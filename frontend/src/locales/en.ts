@@ -1,4 +1,4 @@
-import type { LocaleResource } from './types';
+import type { LocaleResource } from './LocaleResource';
 
 const en: LocaleResource = {
   translation: {

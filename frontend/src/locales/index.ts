@@ -4,7 +4,7 @@ import * as Localization from 'expo-localization';
 
 import en from './en';
 import fi from './fi';
-import type { LocaleResource } from './types';
+import type { LocaleResource } from './LocaleResource';
 
 export type Resources = {
   en: LocaleResource;
