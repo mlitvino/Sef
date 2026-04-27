@@ -12,7 +12,21 @@ export type LocaleResource = {
       enterAmount: string;
       selectDate: string;
       selectTime: string;
+      selectCategory: string;
       filterAll: string;
+    };
+    category: {
+      salary: string;
+      freelance: string;
+      gift: string;
+      investment: string;
+      food: string;
+      transport: string;
+      housing: string;
+      entertainment: string;
+      shopping: string;
+      health: string;
+      other: string;
     };
     settings: {
       title: string;
